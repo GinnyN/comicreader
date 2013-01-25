@@ -256,8 +256,8 @@ var Inflater = function() {
         if(incnt + 4 > inbuf.length()) throw 'available inflate data did not terminate';
         var len = inbuf[incnt++];
         len |= inbuf[incnt++] << 8;
-        if(inbuf[incnt++] != (~len & 0xff) || inbuf[incnt++] != ((~len >> 8) & 0xff))
-            throw "stored block length did not match one's complement";
+        //if(inbuf[incnt++] != (~len & 0xff) || inbuf[incnt++] != ((~len >> 8) & 0xff))
+          //  throw "stored block length did not match one's complement";
         if(incnt + len > inbuf.length()) throw 'available inflate data did not terminate';
         while(len--) buf[buf.length] = inbuf[incnt++];
     }

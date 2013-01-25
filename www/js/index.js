@@ -16,6 +16,46 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var imagePath;
+var filesystem;
+var zip;
+var resourceDIR, resourceURL;
+
+function onerror(message) {
+  console.error(message);
+}
+
+function logText(text) {
+  console.log(text);
+  console.log("--------------");
+}
+
+function loading(url, filename){
+  var url = "http://ginnyn.dreamhosters.com/comic/sigueTuDestinocap1.zip"; // image url
+  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+      filesystem = fs;
+      imagePath = fs.root.fullPath + "/zip.zip"; // full file path
+      resourceURL = imagePath;
+      var fileTransfer = new FileTransfer();
+
+      fileTransfer.download(url, imagePath, function (entry) {
+               console.log(entry.fullPath+"  Hello!"); // entry is fileEntry object
+               
+               var loader = new ZipLoader(entry.fullPath);
+                $.each(loader.getEntries(entry.fullPath), function(i, entry) {
+                console.log("Name: "+ entry.name()+ " Size: "+ entry.size+ " is Directory: "+ entry.isDirectory());
+                });
+
+                }, function (error) {
+                    console.log("Some error");
+              });
+
+        }, function (error) {
+               console.log("Some error");
+      });
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -37,12 +77,10 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        storeIntelligrapeLogo();
+    
+        //var myPhotoSwipe = $("#Gallery a").photoSwipe({ enableMouseWheel: false , enableKeyboard: false });
 
         console.log('Received Event: ' + id);
     }

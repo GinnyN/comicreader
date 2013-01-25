@@ -74,5 +74,16 @@
 	<string></string>
 	<key>NSMainNibFile~ipad</key>
 	<string></string>
+	<key>Plugins</key>
+<dict>
+    <key>File</key>
+    <string>CDVFile</string>
+</dict>
+
+<key>Plugins</key>
+<dict>
+    <key>FileTransfer</key>
+    <string>CDVFileTransfer</string>
+</dict>
 </dict>
 </plist>

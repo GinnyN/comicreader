@@ -44,23 +44,61 @@
         <script type="text/javascript">
             app.initialize();
         </script>
+        <script type="text/javascript">
+        	
+        </script>
         <title>Comic Reader</title>
     </head>
     <body data-theme="a">
-        <div class="app" data-role="page">
+        <div id="tienda" data-role="page">
             <div data-role="header" class="ui-header ui-bar-a" role="banner">
                 <h1 class="ui-title" role="heading">Comic Reader</h1>
             </div>
             <nav data-role="navbar" data-theme="a">
                 <ul>
                     <li><a data-theme="a" id="biblioteca-button">Biblioteca</a></li>
-                    <li><a data-theme="a" id="tienda-button"  href="biblioteca.html">Tienda</a></li>
+                    <li><a data-theme="a" id="tienda-button" href="biblioteca.html">Tienda</a></li>
                 </ul>
             </nav>
             <div data-role="content" data-theme="a" id="content">
+            	<ul data-role="listview" data-theme="a" id="list">
+					{{#objects}}
+						<li>
+							<img src="{{media}}/{{mini}}"/>
+							<a data-url="{{resource_uri}}">
+								
+								{{nombre}}
+								
+							</a>
+							<small>
+									{{#tematica1}}
+										{{tematica1}}/
+									{{/tematica1}}
+									{{#tematica2}}
+										{{tematica2}}/
+									{{/tematica2}}
+									{{#tematica3}}
+										{{tematica3}}/
+									{{/tematica3}}
+									{{#tematica4}}
+										{{tematica4}}
+									{{/tematica4}}
+								</small>
+						</li>
+					{{/objects}}
+				</ul>
+			</div>
 
-            </div>
-        </div>
-        
-    </body>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<nav data-role="navbar" data-theme="a">
+					<ul>
+						<li><a data-theme="a">Abc</a></li>
+						<li><a data-theme="a">Editorial</a></li>
+						<li><a data-theme="a">Autor</a></li>
+						<li><a data-theme="a">Nuevos</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</body>
 </html>
